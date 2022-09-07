@@ -1,0 +1,15 @@
+#rateEl {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #rateContainer {
+    text-align: -webkit-center;
+  }
+  
+  #detailContainer {
+    width: 80vh;
+    height: 80vh;
+    text-align: center;
+    margin: auto;
+  }

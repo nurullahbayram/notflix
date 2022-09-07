@@ -8,6 +8,7 @@ import { TemplateNetflixComponent } from './template-netflix/template-netflix.co
 import { EachMovieComponent } from './each-movie/each-movie.component';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     TemplateNetflixComponent,
     EachMovieComponent,
     AllMoviesComponent,
-    MovieDetailComponent  
+    MovieDetailComponent,
+    VideoPlayerComponent  
   ],
   imports: [
     BrowserModule,
