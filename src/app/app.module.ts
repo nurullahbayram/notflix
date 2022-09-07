@@ -9,6 +9,7 @@ import { EachMovieComponent } from './each-movie/each-movie.component';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
     EachMovieComponent,
     AllMoviesComponent,
     MovieDetailComponent,
-    VideoPlayerComponent  
+    VideoPlayerComponent,
+    LoginComponent  
   ],
   imports: [
     BrowserModule,
