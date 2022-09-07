@@ -2,6 +2,8 @@ import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@an
 import {Movie} from '../movie.model';
 import { MovieService } from '../movie.service';
 import {Observable, Subscription} from "rxjs";
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-video-player',
@@ -9,6 +11,10 @@ import {Observable, Subscription} from "rxjs";
   styleUrls: ['./video-player.component.css']
 })
 export class VideoPlayerComponent implements OnInit, OnChanges, OnDestroy {
+  selectedMovie: any;
+  selectedId: number = 0;
+  
+
   movie: Movie = {
     "id": 1,
     "name": "John Wick",
@@ -26,7 +32,7 @@ export class VideoPlayerComponent implements OnInit, OnChanges, OnDestroy {
   latestMovie?: null | Movie;
   private movieSubscription?: Subscription;
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute) {
   }
 
   async onRatingClicked(value: number): Promise<void> {
@@ -36,14 +42,19 @@ export class VideoPlayerComponent implements OnInit, OnChanges, OnDestroy {
   }
 //Observable<Product[]>
   ngOnInit(): void {
-    this.movieSubscription = this.movieService.getMovies().subscribe(
-      {
-        next: movies=> {
-          this.movies= movies;
-          console.log("MM: " + this.movies)
+    // this.movieSubscription = this.movieService.getMovies().subscribe(
+    //   {
+    //     next: movies=> {
+    //       this.movies= movies;
+    //       console.log("MM: " + this.movies)
 
-        },
-      })
+    //     },
+    //   })
+
+    this.selectedId = this.activatedRoute.snapshot.params['id'];      
+    this.movieService.getMoviesById(this.selectedId).subscribe(response => this.selectedMovie = response);
+    
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {

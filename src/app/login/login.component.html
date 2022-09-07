@@ -6,7 +6,7 @@
              [(ngModel)]="model.email" name="email"
              #email="ngModel" [email]="true">
       <small id="emailHelp" class="form-text text-muted">keep your email in our database.</small>
-      <div [hidden]="email.valid || email.pristine"
+      <div [hidden]="email.valid"
            class="alert alert-danger">
         Email is required
       </div>

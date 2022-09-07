@@ -1,16 +1,16 @@
 <div id="detailContainer" class="card">
 
-    <iframe class="card-img-top" width="560" height="315" [src]="movie.videoUrl | safe" title="YouTube video player"
+    <iframe class="card-img-top" width="560" height="315" [src]="selectedMovie.videoUrl | safe" title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
     <div class="card-body">
-      <h5 class="card-title">{{movie.name}}</h5>
-      <p class="card-text">{{movie.genre}}</p>
-      <p class="card-text">{{movie.description}}</p>
+      <h5 class="card-title">{{selectedMovie.name}}</h5>
+      <p class="card-text">{{selectedMovie.genre}}</p>
+      <p class="card-text">{{selectedMovie.description}}</p>
       <div id="rateContainer" class="text-warning">
         <!-- <app-rating [currentRate]="movie.rating"
                     (ratingClicked)="onRatingClicked($event)"></app-rating> -->
-        <a href="{{movie.imageUrl}}" class="btn btn-outline-danger">Go poster</a>
+        <a href="{{selectedMovie.imageUrl}}" class="btn btn-outline-danger">Go poster</a>
       
       </div>
     </div>
