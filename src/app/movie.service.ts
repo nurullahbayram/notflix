@@ -14,11 +14,14 @@ export class MovieService {
     return this.http.get(this.url + "/all");
   }
 
+  public getMoviesById(id: number) {
+    return this.http.get(this.url + "/all/" + id);
+  }
+
   public addMovies(movie: Movie) {
     const body = JSON.stringify(movie);
     console.log(body);
     return this.http.post(this.url + "/add", body);
   }
 
-  
 }
