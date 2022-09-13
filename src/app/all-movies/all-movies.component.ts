@@ -16,3 +16,11 @@ export class AllMoviesComponent implements OnInit {
 
   ngOnInit(): void { this.movieService.getMovies().subscribe((response) => { this.movies = response; });}
 }
+
+
+// <div *ngFor="let movie of movies">
+//   <a [routerLink]="movie.id">
+//     <img [src]="movie.imageUrl | safe" width="260" height="115">
+//     <h3>{{movie.name}}</h3>
+//   </a>
+// </div>
