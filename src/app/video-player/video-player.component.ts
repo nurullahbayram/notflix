@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class VideoPlayerComponent implements OnInit, OnChanges, OnDestroy {
   selectedMovie: any;
   selectedId: number = 0;
-  
+  starRating =0;
 
   movie: Movie = {
     "id": 1,
