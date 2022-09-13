@@ -11,6 +11,8 @@ import { EachMovieComponent } from './each-movie/each-movie.component';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { LoginComponent } from './login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from "../user.model";
 import {UserService} from "../user.service";
 import {Subscription} from "rxjs";
+import { FormsModule } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-login',
