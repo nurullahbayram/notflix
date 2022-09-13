@@ -1,4 +1,4 @@
-#rateEl {
+ #rateEl {
     display: flex;
     justify-content: center;
   }
@@ -8,8 +8,12 @@
   }
   
   #detailContainer {
-    width: 80vh;
-    height: 80vh;
+    width: 100%;
+    height: 820px;
     text-align: center;
     margin: auto;
+    background-color: black;
   }
+
+  
+ 
