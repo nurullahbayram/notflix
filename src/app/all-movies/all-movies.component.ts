@@ -12,7 +12,22 @@ export class AllMoviesComponent implements OnInit {
 
   movies: any;
 
+  genre: any;
+
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void { this.movieService.getMovies().subscribe((response) => { this.movies = response; });}
+
+  selectGenre(parameter: string) {
+    console.log(parameter);
+    this.genre = parameter;
+  }
 }
+
+
+// <div *ngFor="let movie of movies">
+//   <a [routerLink]="movie.id">
+//     <img [src]="movie.imageUrl | safe" width="260" height="115">
+//     <h3>{{movie.name}}</h3>
+//   </a>
+// </div>

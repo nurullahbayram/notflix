@@ -52,10 +52,8 @@ export class VideoPlayerComponent implements OnInit, OnChanges, OnDestroy {
     //     },
     //   })
 
-    this.selectedId = this.activatedRoute.snapshot.params['id'];      
+    this.selectedId = this.activatedRoute.snapshot.params['id'];
     this.movieService.getMoviesById(this.selectedId).subscribe(response => this.selectedMovie = response);
-    
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
