@@ -13,6 +13,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from './button/button.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     EachMovieComponent,
     AllMoviesComponent,
     VideoPlayerComponent,
-    LoginComponent  
+    LoginComponent,
+    ButtonComponent  
   ],
   imports: [
     BrowserModule,

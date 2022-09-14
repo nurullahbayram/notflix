@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { EachMovieComponent } from './each-movie/each-movie.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { TemplateNetflixComponent } from './template-netflix/template-netflix.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'all', pathMatch: 'full' },
-  { path: 'all', component: AllMoviesComponent },
-  { path: 'all/:id', component: VideoPlayerComponent }
+  { path: 'all', component: TemplateNetflixComponent },
+  { path: 'all/:id', component: VideoPlayerComponent },
 ];
 
 @NgModule({

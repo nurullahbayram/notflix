@@ -14,6 +14,7 @@ export class VideoPlayerComponent implements OnInit, OnChanges, OnDestroy {
   selectedMovie: any;
   selectedId: number = 0;
   starRating =0;
+  homepageurl="http://localhost:4200/all";
 
   movie: Movie = {
     "id": 1,

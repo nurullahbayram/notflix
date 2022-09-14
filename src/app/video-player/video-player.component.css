@@ -9,14 +9,15 @@
   
   #detailContainer {
     width: 100%;
-    height: 820px;
+    height: 640px;
     text-align: center;
-    margin: auto;
     background-color: black;
+    flex: auto;
+    
   }
   ngb-rating {
     color: #FFC107;
-    font-size: 80px;
+    font-size: 20px;
 }
 
 .card-body{
@@ -29,10 +30,23 @@
 }
 
 .card-text{
-  font-size: 40px;
+  font-size: 20px;
 }
 .card-title{
-  font-size: 60px;
+  font-size: 40px;
+}
+
+.container-iframe{
+  width: 60%;
+  height: 350px;
+  margin:auto;
+
+}
+
+.back-btn{
+ margin-right: auto;
+ margin-left: 20px;
+ margin-top: 20px;
 }
 
 
