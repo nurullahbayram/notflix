@@ -12,9 +12,16 @@ export class AllMoviesComponent implements OnInit {
 
   movies: any;
 
+  genre: any;
+
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void { this.movieService.getMovies().subscribe((response) => { this.movies = response; });}
+
+  selectGenre(parameter: string) {
+    console.log(parameter);
+    this.genre = parameter;
+  }
 }
 
 

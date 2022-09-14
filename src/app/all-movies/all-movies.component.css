@@ -23,6 +23,7 @@ img {
 
 h1 {
   padding-top: 60px;  
+  color: #F3F3F3;
 }
 
 .wrapper {
@@ -63,12 +64,17 @@ header {
   color: #E50914;  
   margin: 0; 
   padding: 0; 
+  font-size: 3vh;
+  font-weight: bold;
+  background-color: #141414;
+  text-align: center;
 }
 
 
 .main-nav {
   grid-area: mn;
   padding: 0 30px 0 20px;
+  color: #F3F3F3;
 }
 
 .main-nav a {
@@ -84,6 +90,7 @@ header {
 .sub-nav {
   grid-area: sb;
   padding: 0 40px 0 40px;
+  color: #F3F3F3;
 }
 
 .sub-nav a {
@@ -126,6 +133,7 @@ header {
 /* LINKS */
 .link {
   padding: 50px;
+  color: #F3F3F3;
 }
 
 .sub-links ul {
@@ -159,7 +167,7 @@ header {
 footer {
   padding: 20px;
   text-align: center;
-  color: var(--dark);
+  color:#F3F3F3;
   margin: 10px;
 }
 
