@@ -7,12 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateNetflixComponent implements OnInit {
 
- 
-
   constructor() { }
-
   ngOnInit(): void {
-    
+    throw new Error('Method not implemented.');
   }
-
 }

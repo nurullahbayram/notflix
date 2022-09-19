@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Movie } from './movie.model';
-import { catchError, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap } from 'rxjs';
 
 
 @Injectable({
@@ -9,6 +9,12 @@ import { catchError, Observable, tap } from 'rxjs';
 })
 export class MovieService { 
   private url = 'http://localhost:8090/api/movie';
+  // generatedMovies: Movie[]| undefined;
+
+  private generatedMovies = new BehaviorSubject({});
+
+  public generatedMovies$ = this.generatedMovies.asObservable();
+
 
 
   constructor(private http: HttpClient ) { }
@@ -16,11 +22,30 @@ export class MovieService {
   // public getMovies() {
   //   return this.http.get(this.url + "/all");
   // }
-   public getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.url + "/all");}
+
+  public getMovies(): Observable<Movie[]> {
+    let dataSet: any;
+    this.http.get<Movie[]>(this.url + "/all").subscribe( data => {
+      console.log(data);
+    })
+    return dataSet;
+  }
 
   public getMoviesById(id: number) {
     return this.http.get(this.url + "/all/" + id);
+  }
+
+  public getMoviesByGenre(genre: string) {
+    let generatedMovies: any;
+    this.getMovies().subscribe(data => {
+      data.forEach(movie => {
+        if(movie.genre === genre) {
+          generatedMovies.push(movie); 
+        }
+      })
+    })
+    this.generatedMovies.next(generatedMovies);
+    return this.generatedMovies;
   }
 
   public addMovies(movie: Movie) {
