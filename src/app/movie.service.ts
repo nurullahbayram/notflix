@@ -19,17 +19,17 @@ export class MovieService {
 
   constructor(private http: HttpClient ) { }
 
-  // public getMovies() {
-  //   return this.http.get(this.url + "/all");
-  // }
-
   public getMovies(): Observable<Movie[]> {
-    let dataSet: any;
-    this.http.get<Movie[]>(this.url + "/all").subscribe( data => {
-      console.log(data);
-    })
-    return dataSet;
+    return this.http.get<Movie[]>(this.url + "/all");
   }
+
+  // public getMovies(): Observable<Movie[]> {
+  //   let dataSet: any;
+  //   this.http.get<Movie[]>(this.url + "/all").subscribe( data => {
+  //     // console.log(data);
+  //   })
+  //   return dataSet;
+  // }
 
   public getMoviesById(id: number) {
     return this.http.get(this.url + "/all/" + id);
