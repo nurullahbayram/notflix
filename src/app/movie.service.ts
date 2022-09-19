@@ -9,7 +9,7 @@ import { catchError, Observable, tap } from 'rxjs';
 })
 export class MovieService { 
   private url = 'http://localhost:8090/api/movie';
-
+  
 
   constructor(private http: HttpClient ) { }
 
@@ -32,4 +32,11 @@ export class MovieService {
     this.http.put(this.url, movie).subscribe((data) => {
     })
   }
+  // public findMovieByGenre(x: String) : Observable<Movie[]>  {
+  //   // return this.getMovies().subscribe((data) => {
+  //   //   console.log(data)
+  //   //   data.forEach(movie=>movie.genre==x)
+  //   // })
+  //   return this.http.get<Movie[]>(this.url + "/all/"+x);
+  // }
 }

@@ -42,12 +42,8 @@
       </div>
 
       <h1 id="action">Action</h1>
-      <div class="box">
-        <a *ngFor="let movie of movies" [routerLink]="movie.id" >
-          <ng-template [ngIf] = "movie.genre == 'Action'">
-            <img [src]="movie.imageUrl | safe" alt="">
-          </ng-template>          
-        </a>          
+      <div class="box" >
+        <a *ngFor="let movie of selectedMovies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a> 
       </div>
       
       <h1 id="comedy">Comedy</h1>

@@ -9,14 +9,18 @@ import {Movie} from '../movie.model';
 })
 export class AllMoviesComponent implements OnInit {
   allMoviesInput: any; 
-
+  selectedMovies: any;
   movies: any;
 
   genre: any;
 
   constructor(private movieService: MovieService) {}
 
-  ngOnInit(): void { this.movieService.getMovies().subscribe((response) => { this.movies = response; });}
+  ngOnInit(): void { this.movieService.getMovies().subscribe((response) => { this.movies = response; });
+  // console.log(this.movieService.findMovieByGenre('Action'))
+  this.movieService.getMovies().subscribe((response) => { this.movies = response; });
+}
+
 
   selectGenre(parameter: string) {
     console.log(parameter);

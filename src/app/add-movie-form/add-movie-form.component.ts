@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './add-movie-form.component.html',
   styleUrls: ['./add-movie-form.component.css']
 })
-export class AddMovieFormComponent implements OnInit {
-
+export class AddMovieFormComponent{
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
