@@ -11,27 +11,25 @@ export class AllMoviesComponent implements OnInit {
   allMoviesInput: any; 
   selectedMovies: any;
   movies: any;
+  selectedmovies: any;
+  subscription: any;
 
-  genre: any;
+  constructor(private movieService: MovieService) {
+  
+  }
 
-  constructor(private movieService: MovieService) {}
+  ngOnInit(): void { 
+    this.movieService.getMovies().subscribe((response) => { 
+      this.movies = response; 
+    });
+    this.subscription = this.movieService.generatedMovies$.subscribe((res) => {
+      console.log('Below the response of generatedmovies behaviorsubject')
+      console.log(res);
+      this.selectedmovies = res;
+    })
+  }
 
-  ngOnInit(): void { this.movieService.getMovies().subscribe((response) => { this.movies = response; });
-  // console.log(this.movieService.findMovieByGenre('Action'))
-  this.movieService.getMovies().subscribe((response) => { this.movies = response; });
-}
-
-
-  selectGenre(parameter: string) {
-    console.log(parameter);
-    this.genre = parameter;
+  getActionMovies() {
+    this.selectedmovies = this.movieService.getMoviesByGenre('Action')
   }
 }
-
-
-// <div *ngFor="let movie of movies">
-//   <a [routerLink]="movie.id">
-//     <img [src]="movie.imageUrl | safe" width="260" height="115">
-//     <h3>{{movie.name}}</h3>
-//   </a>
-// </div>

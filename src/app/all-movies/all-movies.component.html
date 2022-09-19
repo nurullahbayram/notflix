@@ -18,7 +18,7 @@
         <!-- <a id="logo" href="#home"><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true" alt="Logo Image"></a> -->
       </div>      
       <nav class="main-nav">                
-        <a href="#action">Action</a>
+        <span (click)="getActionMovies()">Action</span>
         <a href="#comedy">Comedy</a>
         <a href="#drama">Drama</a>
         <a href="#cartoon">Cartoon</a>
@@ -35,15 +35,15 @@
     <!-- MAIN CONTAINER -->
     <section class="main-container"  >
       <div class="location" id="home" >
-          <h1 id="home">Popular on Netflix</h1>
+          <h1 id="home">All Movies</h1>
           <div class="box" >
             <a *ngFor="let movie of movies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a> 
           </div>
       </div>
 
       <h1 id="action">Action</h1>
-      <div class="box" >
-        <a *ngFor="let movie of selectedMovies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a> 
+      <div class="box">  
+        <a *ngFor="let movie of selectedmovies" [routerLink]="movie.id" onload="getMovieByGenre('Action')" ><img [src]="movie.imageUrl | safe" alt=""></a>             
       </div>
       
       <h1 id="comedy">Comedy</h1>
