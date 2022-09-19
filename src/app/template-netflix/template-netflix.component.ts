@@ -10,9 +10,4 @@ export class TemplateNetflixComponent implements OnInit {
  
 
   constructor() { }
-
-  ngOnInit(): void {
-    
-  }
-
 }
