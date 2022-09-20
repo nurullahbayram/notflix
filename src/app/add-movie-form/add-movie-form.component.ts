@@ -65,7 +65,7 @@ export class AddMovieFormComponent implements OnInit {
     formData.append('password', this.form.get('password')?.value);
     console.log(formData);
     this.http
-      .post('http://localhost:8090/api/user/admin', this.movie)
+      .post('http://localhost:8090/api/movie/add', this.movie)
       .subscribe({
         next: (response) => console.log(response),
         error: (error) => console.log(error),
