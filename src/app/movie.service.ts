@@ -11,41 +11,47 @@ export class MovieService {
   private url = 'http://localhost:8090/api/movie';
   // generatedMovies: Movie[]| undefined;
 
-  private generatedMovies = new BehaviorSubject({});
+  private allMovies = new BehaviorSubject({});
 
-  public generatedMovies$ = this.generatedMovies.asObservable();
+  public allMovies$ = this.allMovies.asObservable();
 
+  private genreMovies = new BehaviorSubject({});
+
+  public genreMovies$ = this.genreMovies.asObservable();
 
 
   constructor(private http: HttpClient ) { }
 
-  public getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.url + "/all");
-  }
-
   // public getMovies(): Observable<Movie[]> {
-  //   let dataSet: any;
-  //   this.http.get<Movie[]>(this.url + "/all").subscribe( data => {
-  //     // console.log(data);
-  //   })
-  //   return dataSet;
+  //   return this.http.get<Movie[]>(this.url + "/all");
   // }
+
+  public getMovies(): Observable<Movie[]> {
+    let data: any;
+    this.http.get<Movie[]>(this.url + "/all").subscribe( res => {
+      this.allMovies.next(res);
+    })
+    return data;
+  }
 
   public getMoviesById(id: number) {
     return this.http.get(this.url + "/all/" + id);
   }
 
   public getMoviesByGenre(genre: string) {
-    let generatedMovies: any;
-    this.getMovies().subscribe(data => {
-      data.forEach(movie => {
-        if(movie.genre === genre) {
-          generatedMovies.push(movie); 
-        }
-      })
-    })
-    this.generatedMovies.next(generatedMovies);
-    return this.generatedMovies;
+    let allMoviesArray: any = [];
+    let genreMoviesArray: any = [];
+    // Keep the key in there, even though we don't use it.
+    for (const [key, value] of Object.entries(this.allMovies.value)) {
+      allMoviesArray.push(value);
+    }
+    allMoviesArray.forEach((movie: { genre: any; }) => {
+      if (movie.genre === genre) {
+        genreMoviesArray.push(movie);
+      }
+    });
+    console.log(genreMoviesArray);
+    this.genreMovies.next(genreMoviesArray);
   }
 
   public addMovies(movie: Movie) {

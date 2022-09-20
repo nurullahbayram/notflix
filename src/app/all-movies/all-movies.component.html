@@ -1,13 +1,17 @@
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Netflix</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"
+    integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9"
+    crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="./all-movies.component.css">
 </head>
+
 <body>
   <div class="wrapper">
 
@@ -16,87 +20,98 @@
       <div class="netflixLogo">
         <p id="logo">NOTFLIX</p>
         <!-- <a id="logo" href="#home"><img src="https://github.com/carlosavilae/Netflix-Clone/blob/master/img/logo.PNG?raw=true" alt="Logo Image"></a> -->
-      </div>      
-      <nav class="main-nav">                
-        <span (click)="getActionMovies()">Action</span>
-        <a href="#comedy">Comedy</a>
-        <a href="#drama">Drama</a>
-        <a href="#cartoon">Cartoon</a>
+      </div>
+      <nav class="main-nav">
+        <span (click)="getGenre('All')">All</span>
+        <span (click)="getGenre('Action')">Action</span>
+        <span (click)="getGenre('Comedy')">Comedy</span>
+        <span (click)="getGenre('Drama')">Drama</span>
+        <span (click)="getGenre('Cartoon')">Cartoon</span>
         <!-- <a target="_blank" href="https://codepen.io/cb2307/full/NzaOrm">Portfolio</a>         -->
       </nav>
       <nav class="sub-nav">
         <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
         <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-        <a href="#">Login</a>        
-      </nav>      
+        <a href="#" [routerLink]="['/login']" >Login</a>
+      </nav>
     </header>
     <!-- END OF HEADER -->
-    
+
     <!-- MAIN CONTAINER -->
-    <section class="main-container"  >
-      <div class="location" id="home" >
-          <h1 id="home">All Movies</h1>
-          <div class="box" >
-            <a *ngFor="let movie of movies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a> 
-          </div>
+    <section class="main-container">
+      <div *ngIf="genreMovie === '' || genreMovie === 'All'" class="location" id="home">
+        <h1 id="home">All Movies</h1>
+        <div class="box">
+          <a *ngFor="let movie of movies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a>
+        </div>
+      </div>
+      <div *ngIf="genreMovie === 'Action'">
+        <h1 id="action">Action</h1>
+        <div class="box">
+          <a *ngFor="let movie of selectedmovies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a>
+        </div>
       </div>
 
-      <h1 id="action">Action</h1>
-      <div class="box">  
-        <a *ngFor="let movie of selectedmovies" [routerLink]="movie.id" onload="getMovieByGenre('Action')" ><img [src]="movie.imageUrl | safe" alt=""></a>             
-      </div>
-      
-      <h1 id="comedy">Comedy</h1>
-      <div class="box">
-        
-      </div>
-      
-
-      <h1 id="drama">Drama</h1>
-      <div class="box">
+      <div *ngIf="genreMovie === 'Comedy'">
+        <h1 id="comedy">Comedy</h1>
+        <div class="box">
+          <a *ngFor="let movie of selectedmovies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a>
+        </div>
       </div>
 
-      <h1 id="cartoon">Cartoon</h1>
-      <div class="box">
-      </div>
-     
-    <!-- END OF MAIN CONTAINER -->
 
-    <!-- LINKS -->
-    <section class="link">
-      <div class="logos">
-        <a href="#"><i class="fab fa-facebook-square fa-2x logo"></i></a>
-        <a href="#"><i class="fab fa-instagram fa-2x logo"></i></a>
-        <a href="#"><i class="fab fa-twitter fa-2x logo"></i></a>
-        <a href="#"><i class="fab fa-youtube fa-2x logo"></i></a>
+      <div *ngIf="genreMovie === 'Drama'">
+        <h1 id="drama">Drama</h1>
+        <div class="box">
+          <a *ngFor="let movie of selectedmovies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a>
+        </div>
       </div>
-      <div class="sub-links">
-        <ul>
-          <li><a href="#">Audio and Subtitles</a></li>
-          <li><a href="#">Audio Description</a></li>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Gift Cards</a></li>
-          <li><a href="#">Media Center</a></li>
-          <li><a href="#">Investor Relations</a></li>
-          <li><a href="#">Jobs</a></li>
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Legal Notices</a></li>
-          <li><a href="#">Corporate Information</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-    </section>
-    <!-- END OF LINKS -->
 
-    <!-- FOOTER -->
-    <footer>
-      <p>&copy 2022-2023 Notflix, Inc.</p>
-      <p>Nuri-Halid-Ahmet &copy 2022</p>
-    </footer>
+      <div *ngIf="genreMovie === 'Cartoon'">
+        <h1 id="cartoon">Cartoon</h1>
+        <div class="box">
+          <a *ngFor="let movie of selectedmovies" [routerLink]="movie.id"><img [src]="movie.imageUrl | safe" alt=""></a>
+        </div>
+      </div>
+
+      <!-- END OF MAIN CONTAINER -->
+
+      <!-- LINKS -->
+      <section class="link">
+        <div class="logos">
+          <a href="#"><i class="fab fa-facebook-square fa-2x logo"></i></a>
+          <a href="#"><i class="fab fa-instagram fa-2x logo"></i></a>
+          <a href="#"><i class="fab fa-twitter fa-2x logo"></i></a>
+          <a href="#"><i class="fab fa-youtube fa-2x logo"></i></a>
+        </div>
+        <div class="sub-links">
+          <ul>
+            <li><a href="#">Audio and Subtitles</a></li>
+            <li><a href="#">Audio Description</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Media Center</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Legal Notices</a></li>
+            <li><a href="#">Corporate Information</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+      </section>
+      <!-- END OF LINKS -->
+
+      <!-- FOOTER -->
+      <footer>
+        <p>&copy 2022-2023 Notflix, Inc.</p>
+        <p>Nuri-Halid-Ahmet &copy 2022</p>
+      </footer>
 
     </section>
   </div>
-  
+
 </body>
+
 </html>
