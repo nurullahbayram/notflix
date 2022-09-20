@@ -1,3 +1,8 @@
+<div class="page">
+
+<a [routerLink]="['']" class="back-btn" >
+  <app-button></app-button>
+</a>
 <form [formGroup] = "form" (ngSubmit) = "submitForm()" >
 
     <div class="form-row">
@@ -28,5 +33,6 @@
         <input type="text" id="videoUrl" class="form-control" formControlName= "videoUrl" required>
       </div>      
     </div>
-    <button type="submit" class="btn btn-primary"></button>
+    <button type="submit" class="submit-button">Submit</button>
   </form>
+</div> 
