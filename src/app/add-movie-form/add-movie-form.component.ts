@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Movie } from '../movie.model';
 import { MovieService } from '../movie.service';
+
 @Component({
   selector: 'app-add-movie-form',
   templateUrl: './add-movie-form.component.html',
   styleUrls: ['./add-movie-form.component.css']
 })
-export class AddMovieFormComponent implements OnInit {
+export class AddMovieFormComponent {
 
   form: FormGroup;
 
@@ -25,7 +26,6 @@ export class AddMovieFormComponent implements OnInit {
 
   subscription: any;
 
-
   constructor(private fb: FormBuilder,
     private http: HttpClient,
     private movieService: MovieService,
@@ -36,16 +36,8 @@ export class AddMovieFormComponent implements OnInit {
         genre: ['',[Validators.required]],
         imageUrl: ['',[Validators.required]],
         videoUrl: ['',[Validators.required]]
-      });
-      
-    
+      });    
   }
-
-  ngOnInit(): void {
-    
-  }
-
-
 
   submitForm(){
     var formData: any = new FormData();
@@ -59,20 +51,15 @@ export class AddMovieFormComponent implements OnInit {
     this.movie.videoUrl=this.form.get('videoUrl')?.value;
 
     console.log(this.movie);
-
-    formData.append('id', '0');
-    formData.append('userName', this.form.get('userName')?.value);
-    formData.append('password', this.form.get('password')?.value);
     console.log(formData);
     this.http
       .post('http://localhost:8090/api/movie/add', this.movie)
       .subscribe({
-        next: (response) => console.log(response),
+        next: (response) => {
+          alert('The movie is succesfully added!');
+          console.log(response);
+        },
         error: (error) => console.log(error),
       });
-
-  }
-
-
-  
+  }  
 }
